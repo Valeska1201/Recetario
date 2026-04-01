@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetas del Mundo</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<!-- Fondo -->
+<div id="bg-container">
+  <div class="bg-shape shape1"></div>
+  <div class="bg-shape shape2"></div>
+  <div class="bg-shape shape3"></div>
+  <div id="floaters"></div>
+</div>
+
+<!-- HEADER / HERO -->
+<header id="hero-carousel">
+
+  <div class="hc-slide active">
+    <img src="img/hero1.jpg" alt="Pizza napolitana">
+  </div>
+
+  <div class="hc-slide">
+    <img src="img/hero2.jpg" alt="Comida internacional">
+  </div>
+
+  <div class="hc-overlay">
+    <p class="hc-label">Gastronomía Global</p>
+    <h1 class="hc-title">
+      Recetas del mundo <span>en un sólo lugar</span>
+    </h1>
+    <p class="hc-sub">Cocina internacional a tu alcance</p>
+  </div>
+
+  <button class="hc-btn prev">‹</button>
+  <button class="hc-btn next">›</button>
+
+  <div id="hc-dots"></div>
+
+</header>
+
+<!-- CONTENIDO PRINCIPAL -->
+<main class="main-wrap">
+
+  <!-- Sección países -->
+  <section class="countries">
+
+    <header class="section-label">
+      <span class="badge">Explora por país</span>
+      <h2>Sabores que <span>cuentan historias</span></h2>
+      <p>Haz clic en un país para descubrir sus platos</p>
+    </header>
+
+    <div class="card-row">
+
+      <!-- CARD -->
+      <article class="country-card" data-country="chile">
+
+        <header class="card-header chile">
+          <div class="card-flag-row">
+            <img src="img/chile.png" alt="Bandera Chile">
+            <h3>Chile</h3>
+          </div>
+          <p>Ver platos típicos ↓</p>
+        </header>
+
+        <div class="card-body">
+
+          <div class="carousel" id="car-chile">
+            <div class="carousel-track">
+
+              <div class="carousel-slide">
+                <span class="dish-icon">🥘</span>
+                <h4>Cazuela</h4>
+                <p>Guiso tradicional chileno</p>
+              </div>
+
+              <div class="carousel-slide">
+                <span class="dish-icon">🫔</span>
+                <h4>Empanadas</h4>
+                <p>Rellenas de pino</p>
+              </div>
+
+            </div>
+          </div>
+
+          <button class="car-arrow prev">‹</button>
+          <button class="car-arrow next">›</button>
+
+          <div class="dots-row"></div>
+
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+  <!-- HISTORIA -->
+  <section class="historia">
+    <header>
+      <h2>Historia de las gastronomías</h2>
+    </header>
+
+    <div class="historia-grid">
+
+      <article class="historia-card">
+        <h3>América Latina</h3>
+        <p>Fusión indígena y europea...</p>
+      </article>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <section class="footer-top">
+
+    <article class="footer-brand">
+      <h3>Recetas del Mundo</h3>
+      <p>Conectando culturas a través de la comida.</p>
+    </article>
+
+    <nav class="footer-nav">
+      <h4>Explorar</h4>
+      <ul>
+        <li><a href="#">Recetas</a></li>
+        <li><a href="#">Ingredientes</a></li>
+      </ul>
+    </nav>
+
+  </section>
+
+  <section class="footer-bottom">
+    <p>© 2024 Recetas del Mundo</p>
+  </section>
+
+</footer>
+
+<!-- JS -->
+<script src="app.js"></script>
+</body>
+</html>

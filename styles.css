@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  --primary: #c0621a;
+  --bg: #fdf6ee;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--bg);
+}
+
+/* HERO */
+#hero-carousel {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.hc-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: 1s;
+}
+
+.hc-slide.active {
+  opacity: 1;
+}
+
+.hc-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CARDS */
+.country-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.country-card:hover {
+  transform: translateY(-5px);
+}
+
+/* FOOTER */
+.footer {
+  background: #1e0e06;
+  color: #fff;
+  padding: 40px;
+}
