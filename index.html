@@ -3,150 +3,420 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Recetas del Mundo — Gastronomía global: descubre los platos típicos de Chile, Perú, Colombia, Francia, Brasil, Venezuela, España e Italia.">
   <title>Recetas del Mundo</title>
-
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<!-- Fondo -->
-<div id="bg-container">
-  <div class="bg-shape shape1"></div>
-  <div class="bg-shape shape2"></div>
-  <div class="bg-shape shape3"></div>
-  <div id="floaters"></div>
-</div>
-
-<!-- HEADER / HERO -->
-<header id="hero-carousel">
-
-  <div class="hc-slide active">
-    <img src="img/hero1.jpg" alt="Pizza napolitana">
+  <!-- ══════════════════════════════════════════
+       FONDO FIJO CON FLOTANTES
+  ═══════════════════════════════════════════ -->
+  <div id="bg-container" aria-hidden="true">
+    <div style="position:absolute;top:-10%;left:-10%;width:55%;height:55%;border-radius:50%;background:radial-gradient(circle,rgba(255,200,120,0.18) 0%,transparent 70%);"></div>
+    <div style="position:absolute;bottom:-15%;right:-10%;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle,rgba(255,170,100,0.12) 0%,transparent 70%);"></div>
+    <div style="position:absolute;top:35%;left:50%;width:45%;height:45%;border-radius:50%;background:radial-gradient(circle,rgba(200,230,180,0.15) 0%,transparent 70%);"></div>
+    <div id="floaters" style="position:absolute;inset:0;" aria-hidden="true"></div>
   </div>
 
-  <div class="hc-slide">
-    <img src="img/hero2.jpg" alt="Comida internacional">
-  </div>
+  <!-- ══════════════════════════════════════════
+       HERO CAROUSEL
+  ═══════════════════════════════════════════ -->
+  <section id="hero-carousel" aria-label="Galería de gastronomía mundial">
 
-  <div class="hc-overlay">
-    <p class="hc-label">Gastronomía Global</p>
-    <h1 class="hc-title">
-      Recetas del mundo <span>en un sólo lugar</span>
-    </h1>
-    <p class="hc-sub">Cocina internacional a tu alcance</p>
-  </div>
+    <div class="hc-slide active">
+      <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1400&q=80" alt="Pizza napolitana recién horneada">
+    </div>
+    <div class="hc-slide">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1400&q=80" alt="Preparaciones gastronómicas del mundo">
+    </div>
+    <div class="hc-slide">
+      <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1400&q=80" alt="Gastronomía colorida y variada">
+    </div>
+    <div class="hc-slide">
+      <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1400&q=80" alt="Platos internacionales sobre mesa">
+    </div>
+    <div class="hc-slide">
+      <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?w=1400&q=80" alt="Gastronomía gourmet de alta cocina">
+    </div>
 
-  <button class="hc-btn prev">‹</button>
-  <button class="hc-btn next">›</button>
+    <div class="hc-overlay">
+      <p class="hc-label">Gastronomía Global</p>
+      <h1 class="hc-title">Recetas del mundo<br><span>en un sólo lugar</span></h1>
+      <p class="hc-sub">Cocina internacional a tu alcance</p>
+      <div class="hc-divider" aria-hidden="true"></div>
+    </div>
 
-  <div id="hc-dots"></div>
+    <button class="hc-btn prev" onclick="heroPrev()" aria-label="Imagen anterior">‹</button>
+    <button class="hc-btn next" onclick="heroNext()" aria-label="Imagen siguiente">›</button>
+    <div id="hc-dots" role="tablist" aria-label="Navegación de diapositivas"></div>
 
-</header>
+  </section>
 
-<!-- CONTENIDO PRINCIPAL -->
-<main class="main-wrap">
-
-  <!-- Sección países -->
-  <section class="countries">
+  <!-- ══════════════════════════════════════════
+       TARJETAS DE PAÍSES
+  ═══════════════════════════════════════════ -->
+  <div style="position:relative;z-index:1;">
+  <main class="main-wrap">
 
     <header class="section-label">
-      <span class="badge">Explora por país</span>
+      <p class="badge">Explora por país</p>
       <h2>Sabores que <span>cuentan historias</span></h2>
       <p>Haz clic en un país para descubrir sus platos</p>
+      <div class="divider-line" aria-hidden="true"></div>
     </header>
 
-    <div class="card-row">
+    <!-- Fila 1 -->
+    <div class="card-row" role="list">
 
-      <!-- CARD -->
-      <article class="country-card" data-country="chile">
-
-        <header class="card-header chile">
+      <!-- Chile -->
+      <article class="country-card" role="listitem" onclick="toggleCard('chile')" tabindex="0" aria-expanded="false" aria-controls="chile">
+        <div class="card-header" style="background:linear-gradient(135deg,#e8a8a8,#a8b8d8);">
           <div class="card-flag-row">
-            <img src="img/chile.png" alt="Bandera Chile">
-            <h3>Chile</h3>
+            <img class="flag-img"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/330px-Flag_of_Chile.svg.png"
+                 alt="Bandera de Chile">
+            <h2>Chile</h2>
           </div>
           <p>Ver platos típicos ↓</p>
-        </header>
-
-        <div class="card-body">
-
-          <div class="carousel" id="car-chile">
-            <div class="carousel-track">
-
-              <div class="carousel-slide">
-                <span class="dish-icon">🥘</span>
-                <h4>Cazuela</h4>
-                <p>Guiso tradicional chileno</p>
+        </div>
+        <div id="chile" class="card-body">
+          <div class="carousel-wrap">
+            <div id="car-chile" class="car-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🥘</div><div class="dish-name">Cazuela</div><div class="dish-desc">Guiso tradicional con carne, papas, maíz y verduras de temporada.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🫔</div><div class="dish-name">Empanadas de Pino</div><div class="dish-desc">Masa rellena con carne molida, huevo, aceitunas y cebolla.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🌭</div><div class="dish-name">Completo</div><div class="dish-desc">Hot dog chileno con palta, tomate y mayonesa abundante.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍲</div><div class="dish-name">Curanto</div><div class="dish-desc">Cocción ancestral de mariscos, carnes y papas bajo tierra caliente.</div></div>
               </div>
-
-              <div class="carousel-slide">
-                <span class="dish-icon">🫔</span>
-                <h4>Empanadas</h4>
-                <p>Rellenas de pino</p>
-              </div>
-
             </div>
+            <button class="car-arrow prev" onclick="prevSlide(event,'car-chile')" aria-label="Plato anterior">‹</button>
+            <button class="car-arrow next" onclick="nextSlide(event,'car-chile',4)" aria-label="Plato siguiente">›</button>
           </div>
-
-          <button class="car-arrow prev">‹</button>
-          <button class="car-arrow next">›</button>
-
-          <div class="dots-row"></div>
-
+          <div class="dots-row" id="dots-car-chile" role="tablist" aria-label="Platos de Chile"></div>
         </div>
       </article>
 
-    </div>
-
-  </section>
-
-  <!-- HISTORIA -->
-  <section class="historia">
-    <header>
-      <h2>Historia de las gastronomías</h2>
-    </header>
-
-    <div class="historia-grid">
-
-      <article class="historia-card">
-        <h3>América Latina</h3>
-        <p>Fusión indígena y europea...</p>
+      <!-- Perú -->
+      <article class="country-card" role="listitem" onclick="toggleCard('peru')" tabindex="0" aria-expanded="false" aria-controls="peru">
+        <div class="card-header" style="background:linear-gradient(135deg,#e8a0a0,#e8b8b8);">
+          <div class="card-flag-row">
+            <img class="flag-img"
+                 src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Peru.svg"
+                 alt="Bandera de Perú">
+            <h2>Perú</h2>
+          </div>
+          <p>Ver platos típicos ↓</p>
+        </div>
+        <div id="peru" class="card-body">
+          <div class="carousel-wrap">
+            <div id="car-peru" class="car-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🐟</div><div class="dish-name">Ceviche</div><div class="dish-desc">Pescado fresco marinado en limón con cebolla, ají y cilantro.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🥩</div><div class="dish-name">Lomo Saltado</div><div class="dish-desc">Salteado de carne con verduras, papas fritas y arroz blanco.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍗</div><div class="dish-name">Ají de Gallina</div><div class="dish-desc">Pollo deshilachado en salsa cremosa de ají amarillo y nueces.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍚</div><div class="dish-name">Arroz con Leche</div><div class="dish-desc">Postre cremoso de arroz con leche, canela y cáscara de limón.</div></div>
+              </div>
+            </div>
+            <button class="car-arrow prev" onclick="prevSlide(event,'car-peru')" aria-label="Plato anterior">‹</button>
+            <button class="car-arrow next" onclick="nextSlide(event,'car-peru',4)" aria-label="Plato siguiente">›</button>
+          </div>
+          <div class="dots-row" id="dots-car-peru" role="tablist" aria-label="Platos de Perú"></div>
+        </div>
       </article>
 
+      <!-- Colombia -->
+      <article class="country-card" role="listitem" onclick="toggleCard('colombia')" tabindex="0" aria-expanded="false" aria-controls="colombia">
+        <div class="card-header" style="background:linear-gradient(135deg,#e8d898,#a8b4cc 60%,#d8a8a8);">
+          <div class="card-flag-row">
+            <img class="flag-img"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Colombia.svg/330px-Flag_of_Colombia.svg.png"
+                 alt="Bandera de Colombia">
+            <h2>Colombia</h2>
+          </div>
+          <p>Ver platos típicos ↓</p>
+        </div>
+        <div id="colombia" class="card-body">
+          <div class="carousel-wrap">
+            <div id="car-colombia" class="car-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍲</div><div class="dish-name">Bandeja Paisa</div><div class="dish-desc">El plato más emblemático: frijoles, arroz, carne, chicharrón, huevo y más.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🌽</div><div class="dish-name">Arepas</div><div class="dish-desc">Tortillas de maíz a la plancha, base de la cocina colombiana diaria.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍗</div><div class="dish-name">Ajiaco</div><div class="dish-desc">Sopa bogotana de pollo con tres variedades de papa y guascas.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🥐</div><div class="dish-name">Buñuelos</div><div class="dish-desc">Bolitas de queso fritas y esponjosas, típicas de la época navideña.</div></div>
+              </div>
+            </div>
+            <button class="car-arrow prev" onclick="prevSlide(event,'car-colombia')" aria-label="Plato anterior">‹</button>
+            <button class="car-arrow next" onclick="nextSlide(event,'car-colombia',4)" aria-label="Plato siguiente">›</button>
+          </div>
+          <div class="dots-row" id="dots-car-colombia" role="tablist" aria-label="Platos de Colombia"></div>
+        </div>
+      </article>
+
+      <!-- Francia -->
+      <article class="country-card" role="listitem" onclick="toggleCard('francia')" tabindex="0" aria-expanded="false" aria-controls="francia">
+        <div class="card-header" style="background:linear-gradient(135deg,#a8b8d8,#d8a8b0);">
+          <div class="card-flag-row">
+            <img class="flag-img"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/330px-Flag_of_France.svg.png"
+                 alt="Bandera de Francia">
+            <h2>Francia</h2>
+          </div>
+          <p>Ver platos típicos ↓</p>
+        </div>
+        <div id="francia" class="card-body">
+          <div class="carousel-wrap">
+            <div id="car-francia" class="car-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🥐</div><div class="dish-name">Croissant</div><div class="dish-desc">Hojaldrado de mantequilla, símbolo de la boulangerie francesa.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍲</div><div class="dish-name">Bouillabaisse</div><div class="dish-desc">Sopa de pescados y mariscos provenzal con azafrán y hierbas.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🧀</div><div class="dish-name">Quiche Lorraine</div><div class="dish-desc">Tarta salada con crema, huevos y tocino ahumado al horno.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍮</div><div class="dish-name">Crème Brûlée</div><div class="dish-desc">Natilla de vainilla con costra de azúcar caramelizado crujiente.</div></div>
+              </div>
+            </div>
+            <button class="car-arrow prev" onclick="prevSlide(event,'car-francia')" aria-label="Plato anterior">‹</button>
+            <button class="car-arrow next" onclick="nextSlide(event,'car-francia',4)" aria-label="Plato siguiente">›</button>
+          </div>
+          <div class="dots-row" id="dots-car-francia" role="tablist" aria-label="Platos de Francia"></div>
+        </div>
+      </article>
+
+    </div><!-- fin fila 1 -->
+
+    <!-- Fila 2 -->
+    <div class="card-row" role="list">
+
+      <!-- Brasil -->
+      <article class="country-card" role="listitem" onclick="toggleCard('brasil')" tabindex="0" aria-expanded="false" aria-controls="brasil">
+        <div class="card-header" style="background:linear-gradient(135deg,#98c8a0,#e0d888 60%,#98a8c0);">
+          <div class="card-flag-row">
+            <img class="flag-img"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/250px-Flag_of_Brazil.svg.png"
+                 alt="Bandera de Brasil">
+            <h2>Brasil</h2>
+          </div>
+          <p>Ver platos típicos ↓</p>
+        </div>
+        <div id="brasil" class="card-body">
+          <div class="carousel-wrap">
+            <div id="car-brasil" class="car-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🫘</div><div class="dish-name">Feijoada</div><div class="dish-desc">Guiso de frijoles negros con cerdo, acompañado de farofa y naranja.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🥩</div><div class="dish-name">Churrasco</div><div class="dish-desc">Asado a las brasas estilo gaúcho, diversas cortes de carne al espeto.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🧆</div><div class="dish-name">Acarajé</div><div class="dish-desc">Bolitas de frijol frita en aceite de dendê, rellenas de camarón seco.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍫</div><div class="dish-name">Brigadeiro</div><div class="dish-desc">Bombón de chocolate condensado con granillo, el dulce nacional.</div></div>
+              </div>
+            </div>
+            <button class="car-arrow prev" onclick="prevSlide(event,'car-brasil')" aria-label="Plato anterior">‹</button>
+            <button class="car-arrow next" onclick="nextSlide(event,'car-brasil',4)" aria-label="Plato siguiente">›</button>
+          </div>
+          <div class="dots-row" id="dots-car-brasil" role="tablist" aria-label="Platos de Brasil"></div>
+        </div>
+      </article>
+
+      <!-- Venezuela -->
+      <article class="country-card" role="listitem" onclick="toggleCard('venezuela')" tabindex="0" aria-expanded="false" aria-controls="venezuela">
+        <div class="card-header" style="background:linear-gradient(135deg,#d8a8b0,#a8aed0 50%,#d8cc88);">
+          <div class="card-flag-row">
+            <img class="flag-img"
+                 src="https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg"
+                 alt="Bandera de Venezuela">
+            <h2>Venezuela</h2>
+          </div>
+          <p>Ver platos típicos ↓</p>
+        </div>
+        <div id="venezuela" class="card-body">
+          <div class="carousel-wrap">
+            <div id="car-venezuela" class="car-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🌽</div><div class="dish-name">Arepas</div><div class="dish-desc">Pan de maíz relleno con caraotas, queso, carne mechada o aguacate.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍖</div><div class="dish-name">Pabellón Criollo</div><div class="dish-desc">Plato nacional: arroz, caraotas negras, carne mechada y tajadas.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🫔</div><div class="dish-name">Hallacas</div><div class="dish-desc">Masa de maíz rellena de guiso envuelta en hojas de plátano.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍮</div><div class="dish-name">Bienmesabe</div><div class="dish-desc">Crema dulce de coco con azúcar y yemas de huevo, postre tradicional.</div></div>
+              </div>
+            </div>
+            <button class="car-arrow prev" onclick="prevSlide(event,'car-venezuela')" aria-label="Plato anterior">‹</button>
+            <button class="car-arrow next" onclick="nextSlide(event,'car-venezuela',4)" aria-label="Plato siguiente">›</button>
+          </div>
+          <div class="dots-row" id="dots-car-venezuela" role="tablist" aria-label="Platos de Venezuela"></div>
+        </div>
+      </article>
+
+      <!-- España -->
+      <article class="country-card" role="listitem" onclick="toggleCard('espana')" tabindex="0" aria-expanded="false" aria-controls="espana">
+        <div class="card-header" style="background:linear-gradient(135deg,#d8a870,#e8d898 50%,#d8a870);">
+          <div class="card-flag-row">
+            <img class="flag-img"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/330px-Bandera_de_Espa%C3%B1a.svg.png"
+                 alt="Bandera de España">
+            <h2>España</h2>
+          </div>
+          <p>Ver platos típicos ↓</p>
+        </div>
+        <div id="espana" class="card-body">
+          <div class="carousel-wrap">
+            <div id="car-espana" class="car-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🥘</div><div class="dish-name">Paella</div><div class="dish-desc">Arroz valenciano con mariscos o pollo, azafrán y pimentón en paellera.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍳</div><div class="dish-name">Tortilla Española</div><div class="dish-desc">Omelette gruesa de papas y cebolla, servida fría o caliente en tapas.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍖</div><div class="dish-name">Cocido Madrileño</div><div class="dish-desc">Puchero de garbanzos con carnes y verduras, servido en tres vuelcos.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍩</div><div class="dish-name">Churros con Chocolate</div><div class="dish-desc">Masa frita crujiente bañada en chocolate espeso, desayuno clásico.</div></div>
+              </div>
+            </div>
+            <button class="car-arrow prev" onclick="prevSlide(event,'car-espana')" aria-label="Plato anterior">‹</button>
+            <button class="car-arrow next" onclick="nextSlide(event,'car-espana',4)" aria-label="Plato siguiente">›</button>
+          </div>
+          <div class="dots-row" id="dots-car-espana" role="tablist" aria-label="Platos de España"></div>
+        </div>
+      </article>
+
+      <!-- Italia -->
+      <article class="country-card" role="listitem" onclick="toggleCard('italia')" tabindex="0" aria-expanded="false" aria-controls="italia">
+        <div class="card-header" style="background:linear-gradient(135deg,#98c0a8,#f0eeea 50%,#d8a8a8);">
+          <div class="card-flag-row">
+            <img class="flag-img"
+                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/1280px-Flag_of_Italy.svg.png"
+                 alt="Bandera de Italia">
+            <h2 style="color:#4a3a30;text-shadow:none;">Italia</h2>
+          </div>
+          <p style="color:rgba(60,40,20,0.6);">Ver platos típicos ↓</p>
+        </div>
+        <div id="italia" class="card-body">
+          <div class="carousel-wrap">
+            <div id="car-italia" class="car-viewport">
+              <div class="carousel-track">
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍕</div><div class="dish-name">Pizza Napolitana</div><div class="dish-desc">Masa fina al horno de leña con tomate San Marzano y mozzarella di bufala.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🍝</div><div class="dish-name">Pasta Carbonara</div><div class="dish-desc">Espagueti con guanciale, yemas de huevo, pecorino y pimienta negra.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">🥩</div><div class="dish-name">Ossobuco</div><div class="dish-desc">Jarrete de ternera braseado con gremolata, acompañado de risotto.</div></div>
+                <div class="carousel-slide"><div class="dish-icon" aria-hidden="true">☕</div><div class="dish-name">Tiramisú</div><div class="dish-desc">Capas de bizcocho con café, mascarpone, yemas y cacao en polvo.</div></div>
+              </div>
+            </div>
+            <button class="car-arrow prev" onclick="prevSlide(event,'car-italia')" aria-label="Plato anterior">‹</button>
+            <button class="car-arrow next" onclick="nextSlide(event,'car-italia',4)" aria-label="Plato siguiente">›</button>
+          </div>
+          <div class="dots-row" id="dots-car-italia" role="tablist" aria-label="Platos de Italia"></div>
+        </div>
+      </article>
+
+    </div><!-- fin fila 2 -->
+
+  </main>
+  </div><!-- cierre z-index:1 -->
+
+  <!-- ══════════════════════════════════════════
+       HISTORIA DE LAS GASTRONOMÍAS
+  ═══════════════════════════════════════════ -->
+  <section class="historia-section" aria-label="Historia de las gastronomías">
+    <div class="historia-inner">
+      <h3>Historia de estas <span>gastronomías</span></h3>
+      <p class="hs-tag">Un viaje a través del tiempo y el sabor</p>
+      <div class="historia-grid">
+
+        <article class="historia-card">
+          <div class="hc-icon" aria-hidden="true">🌎</div>
+          <h4>América Latina</h4>
+          <p>Las cocinas latinoamericanas son el resultado de miles de años de culturas indígenas fusionadas con la influencia española, portuguesa y africana. Ingredientes como el maíz, la papa y el ají son pilares que sostienen identidades culinarias únicas en cada país.</p>
+        </article>
+
+        <article class="historia-card">
+          <div class="hc-icon" aria-hidden="true">🏛️</div>
+          <h4>Europa mediterránea</h4>
+          <p>Italia, Francia y España forman el triángulo de oro de la gastronomía occidental. Desde el Renacimiento, sus cocinas han sido declaradas Patrimonio Cultural Inmaterial por la UNESCO, marcando siglos de técnica, producto y filosofía de mesa.</p>
+        </article>
+
+        <article class="historia-card">
+          <div class="hc-icon" aria-hidden="true">🌿</div>
+          <h4>Ingredientes milenarios</h4>
+          <p>El ají amarillo peruano, la guasca colombiana, el azafrán valenciano, el queso parmesano, el dendê brasileño… cada ingrediente lleva siglos de historia agrícola, rutas comerciales y saberes populares transmitidos de generación en generación.</p>
+        </article>
+
+        <article class="historia-card">
+          <div class="hc-icon" aria-hidden="true">🔥</div>
+          <h4>Técnicas ancestrales</h4>
+          <p>El curanto chileno cocinado bajo tierra, las hallacas venezolanas envueltas en hojas de plátano, la paella valenciana sobre fuego vivo de leña de naranjo: cada técnica es un documento vivo de la historia de sus pueblos.</p>
+        </article>
+
+      </div>
     </div>
   </section>
 
-</main>
+  <!-- ══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-top">
 
-<!-- FOOTER -->
-<footer class="footer">
+      <!-- Quiénes somos -->
+      <div class="footer-brand">
+        <p class="brand-title">Recetas del <span>Mundo</span></p>
+        <p class="brand-tag">Gastronomía global · Est. 2024</p>
+        <div class="qs-section">
+          <p>
+            <strong style="color:#ffb97a;">¿Quiénes somos?</strong><br><br>
+            Somos un equipo de apasionados por la cocina y los viajes que creemos que la comida es el lenguaje universal de la humanidad. Nacimos con el propósito de conectar culturas a través de sus platos más emblemáticos, reuniendo tradiciones gastronómicas de todos los rincones del planeta en un solo lugar accesible, visual y emocionante.<br><br>
+            Nuestro equipo recorre mercados, conversa con cocineras de pueblo y documenta recetas que de otro modo podrían perderse en el tiempo. Cada tarjeta de país que ves aquí es el fruto de horas de investigación y amor por lo auténtico.
+          </p>
+        </div>
+      </div>
 
-  <section class="footer-top">
+      <!-- Navegar -->
+      <nav class="footer-col" aria-label="Explorar el sitio">
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="#"><span class="arrow" aria-hidden="true">›</span> Recetas por país</a></li>
+          <li><a href="#"><span class="arrow" aria-hidden="true">›</span> Ingredientes del mundo</a></li>
+          <li><a href="#"><span class="arrow" aria-hidden="true">›</span> Técnicas culinarias</a></li>
+          <li><a href="#"><span class="arrow" aria-hidden="true">›</span> Historia gastronómica</a></li>
+          <li><a href="#"><span class="arrow" aria-hidden="true">›</span> Recetas de temporada</a></li>
+          <li><a href="#"><span class="arrow" aria-hidden="true">›</span> Postres internacionales</a></li>
+        </ul>
+      </nav>
 
-    <article class="footer-brand">
-      <h3>Recetas del Mundo</h3>
-      <p>Conectando culturas a través de la comida.</p>
-    </article>
+      <!-- Redes sociales -->
+      <div class="footer-col">
+        <h4>Redes sociales</h4>
+        <div class="social-grid">
+          <a class="social-btn" href="#" title="Instagram" aria-label="Instagram">
+            <span class="sicon" aria-hidden="true">📸</span>
+            <span>Instagram</span>
+          </a>
+          <a class="social-btn" href="#" title="TikTok" aria-label="TikTok">
+            <span class="sicon" aria-hidden="true">🎵</span>
+            <span>TikTok</span>
+          </a>
+          <a class="social-btn" href="#" title="YouTube" aria-label="YouTube">
+            <span class="sicon" aria-hidden="true">▶️</span>
+            <span>YouTube</span>
+          </a>
+          <a class="social-btn" href="#" title="Facebook" aria-label="Facebook">
+            <span class="sicon" aria-hidden="true">👥</span>
+            <span>Facebook</span>
+          </a>
+          <a class="social-btn" href="#" title="Pinterest" aria-label="Pinterest">
+            <span class="sicon" aria-hidden="true">📌</span>
+            <span>Pinterest</span>
+          </a>
+          <a class="social-btn" href="#" title="Newsletter" aria-label="Newsletter">
+            <span class="sicon" aria-hidden="true">✉️</span>
+            <span>Newsletter</span>
+          </a>
+        </div>
+        <p style="font-size:0.78rem;color:rgba(212,184,152,0.45);margin-top:18px;line-height:1.6;">
+          Síguenos para recibir nuevas recetas, videos de preparación y viajes gastronómicos cada semana.
+        </p>
+      </div>
 
-    <nav class="footer-nav">
-      <h4>Explorar</h4>
-      <ul>
-        <li><a href="#">Recetas</a></li>
-        <li><a href="#">Ingredientes</a></li>
-      </ul>
-    </nav>
+    </div>
 
-  </section>
+    <hr class="footer-divider">
 
-  <section class="footer-bottom">
-    <p>© 2024 Recetas del Mundo</p>
-  </section>
+    <div class="footer-bottom">
+      <p>© 2024 Recetas del Mundo · Todos los derechos reservados</p>
+      <p class="flags-small" aria-label="Países representados">🇨🇱 🇵🇪 🇨🇴 🇫🇷 🇧🇷 🇻🇪 🇪🇸 🇮🇹</p>
+      <p>Hecho con ❤️ y mucho sabor</p>
+    </div>
+  </footer>
 
-</footer>
-
-<!-- JS -->
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
